@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseClick : MonoBehaviour
 {
-    private bool onClick;
+    private bool onDown;
     private Transform cubeTransform;
 
     // Update is called once per frame
@@ -13,19 +13,19 @@ public class MouseClick : MonoBehaviour
         //≈–∂œ Û±Í◊¥Ã¨
         if (Input.GetMouseButtonDown(0))
         {
-            onClick = true;
+            onDown = true;
         }
         if (Input.GetMouseButtonUp(0))
         {
-            onClick = false;
+            onDown = false;
             cubeTransform = null;
         }
         
-        if (onClick)
+        if (onDown)
         {
             if(cubeTransform == null)
             {
-                IsRayCast();
+                CheckRayCast();
             }
             else
             {
@@ -36,7 +36,7 @@ public class MouseClick : MonoBehaviour
     }
 
     //≈–∂œ…‰œﬂ «∑Ò…‰µΩcube
-    private void IsRayCast()
+    private void CheckRayCast()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -62,7 +62,7 @@ public class MouseClick : MonoBehaviour
         if(scaleNum != 0)
         {
             scaleNum += 1;
-            Vector3 cubeScale = new Vector3(cubeTransform.localScale.x * scaleNum, cubeTransform.localScale.y * scaleNum, cubeTransform.localScale.z * scaleNum);
+            Vector3 cubeScale = new Vector3(cubeTransform.localScale.x, cubeTransform.localScale.y, cubeTransform.localScale.z) * scaleNum;
             cubeTransform.localScale = cubeScale;
         }
     }

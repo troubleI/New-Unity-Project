@@ -54,9 +54,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Test2\MouseClick.cs" />
-    <Compile Include="Assets\Scripts\Test1\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Test3\MouseRotate.cs" />
+    <Compile Include="Assets\Scripts\Test1\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Test4\TextUndo.cs" />
+    <Compile Include="Assets\Scripts\Test5\TypeWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
