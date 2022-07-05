@@ -53,8 +53,10 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Test1\Manager.cs" />
     <Compile Include="Assets\Scripts\Test2\MouseClick.cs" />
+    <Compile Include="Assets\Scripts\Test1\TimeManager.cs" />
+    <Compile Include="Assets\Scripts\Test3\MouseRotate.cs" />
+    <Compile Include="Assets\Scripts\Test4\TextUndo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
