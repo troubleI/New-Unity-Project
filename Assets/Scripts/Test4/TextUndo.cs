@@ -20,7 +20,7 @@ public class TextUndo : MonoBehaviour
 
     void Update()
     {
-        Check(KeyCode.LeftAlt,ref isAlt);
+        isAlt = IsKeyCode(KeyCode.LeftAlt,isAlt);
         if(isAlt && Input.GetKeyDown(KeyCode.Z))
         {
             //若栈为空则添加空字符串，否则输出栈内字符串
@@ -41,16 +41,17 @@ public class TextUndo : MonoBehaviour
     }
 
     //判断按键状态
-    private void Check(KeyCode key,ref bool checkKey)
+    private bool IsKeyCode(KeyCode key,bool checkKey)
     {
         if (Input.GetKeyDown(key))
         {
-            checkKey = true;
+            return true;
         }
         if (Input.GetKeyUp(key))
         {
-            checkKey = false;
+            return false;
         }
+        return checkKey;
     }
 
     //若inputfield发生改变
