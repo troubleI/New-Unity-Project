@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class BagManager : MonoBehaviour
 {
-    //下滑限制
-    public float downLimit;
-    //上滑限制
-    public float upLimit;
+    //每行点的X值
+    public int[] posX;
+
     //行最大量
     public int lineLimit;
-    //最大物品量
+    //显示数量
+    public int showLimit;
+    //物品数量
     public int bagLimit;
+    //每行高度
+    public int lineHeight;
 
     private RectTransform rectTransform;
 
@@ -19,60 +22,70 @@ public class BagManager : MonoBehaviour
     void Start()
     {
         rectTransform = this.GetComponent<RectTransform>();
+        //处理子物体x坐标数组
+        int line = bagLimit / 3;
+        if(bagLimit % 3 != 0)
+        {
+            line++;
+        }
+        //设置content大小
+        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, line * lineHeight - 10);
     }
 
     public void OnChange()
     {
+        int topLine = int.Parse(this.transform.GetChild(0).GetComponent<Item>().name) / 3;
         //向下滑
-        if(rectTransform.localPosition.y > downLimit)
+        if ((topLine + 1) * lineHeight < rectTransform.anchoredPosition.y)
         {
-            Slip(true);
+            Down();
         }
         //向上滑
-        else if(rectTransform.localPosition.y < upLimit)
+        else if (topLine * lineHeight > rectTransform.anchoredPosition.y && rectTransform.anchoredPosition.y > 0)
         {
-            Slip(false);
+            Up();
         }
     }
 
-    private void Slip(bool isDown)
+    private void Down()
     {
-        int num;
-        //设置Content位置
-        if (isDown)
+        //获取最下方子物体序号
+        Transform lastItem = this.transform.GetChild(showLimit - 1);
+        int num = int.Parse(lastItem.GetComponent<Item>().name);
+        //处理遮罩外的子物体
+        for (int i = 0;i < lineLimit; i++)
         {
-            rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, upLimit, rectTransform.localPosition.z);
-            //获取最下方物体序号
-            num = int.Parse(this.transform.GetChild(bagLimit - 1).GetComponent<Item>().name);
+            //获取对象子物体的现序号，与修改后序号
+            int nowNum = 0, changeNum = num + i + 1;
+            //获取并设置子物体
+            Transform item = this.transform.GetChild(nowNum);
+            Item item_init = item.GetComponent<Item>();
+            item_init.name = changeNum.ToString();
+            item_init.Init(num + i + 1 < bagLimit);
+            //设置子物体位置
+            (item as RectTransform).anchoredPosition = new Vector2(posX[changeNum % 3], (lastItem as RectTransform).anchoredPosition.y - lineHeight);
+            item.SetAsLastSibling();
         }
-        else
-        {
-            transform.localPosition = new Vector3(rectTransform.localPosition.x, downLimit, rectTransform.localPosition.z);
-            //获取首个物体序号
-            num = int.Parse(this.transform.GetChild(0).GetComponent<Item>().name);
-        }
-        //移动遮罩外的子物体
+    }
+
+    private void Up()
+    {
+        //获取最上方子物体序号
+        Transform firstItem = this.transform.GetChild(0);
+        int num = int.Parse(firstItem.GetComponent<Item>().name);
+        //处理遮罩外的子物体
         for (int i = 0; i < lineLimit; i++)
         {
-            int changeNum = 0,nowNum = num + i + 1;
-            if (!isDown)
-            {
-                changeNum = bagLimit - 1;
-                nowNum = num - i - 1;
-            }
-            //设置需移动的子物体
-            Transform item = this.transform.GetChild(changeNum);
+            //获取对象子物体的现序号，与修改后序号
+            int nowNum = showLimit - 1, changeNum = num - i - 1;
+            //获取并设置子物体
+            Transform item = this.transform.GetChild(nowNum);
             Item item_init = item.GetComponent<Item>();
-            item_init.name = (nowNum).ToString();
-            item_init.Init();
-            if (isDown)
-            {
-                item.SetAsLastSibling();
-            }
-            else
-            {
-                item.SetAsFirstSibling();
-            }
+            item_init.name = changeNum.ToString();
+            item_init.Init(num - i - 1 > 0);
+            //设置子物体位置
+            (item as RectTransform).anchoredPosition = new Vector2(posX[changeNum % 3], (firstItem as RectTransform).anchoredPosition.y + lineHeight);
+            item.SetAsFirstSibling();
         }
     }
 }

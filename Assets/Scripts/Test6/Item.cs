@@ -10,13 +10,19 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Init();
+        Init(true);
     }
 
-    public void Init()
+    public void Init(bool real)
     {
         Text text = this.GetComponentInChildren<Text>();
-        text.text = name;
-        this.gameObject.name = name;
+        if (real)
+        {
+            text.text = name;
+        }
+        else
+        {
+            text.text = "";
+        }
     }
 }
