@@ -56,8 +56,10 @@
     <Compile Include="Assets\Scripts\Test2\MouseClick.cs" />
     <Compile Include="Assets\Scripts\Test3\MouseRotate.cs" />
     <Compile Include="Assets\Scripts\Test1\TimeManager.cs" />
-    <Compile Include="Assets\Scripts\Test4\TextUndo.cs" />
     <Compile Include="Assets\Scripts\Test5\TypeWriter.cs" />
+    <Compile Include="Assets\Scripts\Test4\TextUndo.cs" />
+    <Compile Include="Assets\Scripts\Test6\Item.cs" />
+    <Compile Include="Assets\Scripts\Test6\BagManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
