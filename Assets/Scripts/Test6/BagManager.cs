@@ -6,7 +6,7 @@ public class BagManager : MonoBehaviour
 {
     //每行点的X值
     public int[] posX;
-
+ 
     //行最大量
     public int lineLimit;
     //显示数量
@@ -15,10 +15,12 @@ public class BagManager : MonoBehaviour
     public int bagLimit;
     //每行高度
     public int lineHeight;
+    //PosY的初始值
+    public int beginPosY;
 
+    private int topLine;
     private RectTransform rectTransform;
 
-    // Start is called before the first frame update
     void Start()
     {
         rectTransform = this.GetComponent<RectTransform>();
@@ -29,63 +31,43 @@ public class BagManager : MonoBehaviour
             line++;
         }
         //设置content大小
-        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, line * lineHeight - 10);
+        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, line * lineHeight);
+        topLine = 0;
+        Pool.Instance.InitObject(showLimit,this.transform);
     }
 
-    public void OnChange()
+    void Update()
     {
-        int topLine = int.Parse(this.transform.GetChild(0).GetComponent<Item>().name) / 3;
-        //向下滑
-        if ((topLine + 1) * lineHeight < rectTransform.anchoredPosition.y)
+        //检测可显示的第一行改变
+        int posY = (int)rectTransform.localPosition.y;
+        int nowTopLine = posY / lineHeight + 1;
+        if (nowTopLine != topLine)
         {
-            Down();
-        }
-        //向上滑
-        else if (topLine * lineHeight > rectTransform.anchoredPosition.y && rectTransform.anchoredPosition.y > 0)
-        {
-            Up();
+            topLine = nowTopLine;
+            Move();
         }
     }
 
-    private void Down()
+    /// <summary>
+    /// 移动子物体
+    /// </summary>
+    private void Move()
     {
-        //获取最下方子物体序号
-        Transform lastItem = this.transform.GetChild(showLimit - 1);
-        int num = int.Parse(lastItem.GetComponent<Item>().name);
-        //处理遮罩外的子物体
-        for (int i = 0;i < lineLimit; i++)
+        //获得子物体列表
+        List<GameObject> gameObjs = Pool.Instance.GetObject();
+        int line = topLine;
+        for(int i = 0;i < showLimit;i++)
         {
-            //获取对象子物体的现序号，与修改后序号
-            int nowNum = 0, changeNum = num + i + 1;
-            //获取并设置子物体
-            Transform item = this.transform.GetChild(nowNum);
-            Item item_init = item.GetComponent<Item>();
-            item_init.name = changeNum.ToString();
-            item_init.Init(num + i + 1 < bagLimit);
+            GameObject obj = gameObjs[i];
+            Item item = obj.GetComponent<Item>();
+            //配置子物体信息
+            item.Init((topLine - 1) * 3 + i + 1, bagLimit);
             //设置子物体位置
-            (item as RectTransform).anchoredPosition = new Vector2(posX[changeNum % 3], (lastItem as RectTransform).anchoredPosition.y - lineHeight);
-            item.SetAsLastSibling();
-        }
-    }
-
-    private void Up()
-    {
-        //获取最上方子物体序号
-        Transform firstItem = this.transform.GetChild(0);
-        int num = int.Parse(firstItem.GetComponent<Item>().name);
-        //处理遮罩外的子物体
-        for (int i = 0; i < lineLimit; i++)
-        {
-            //获取对象子物体的现序号，与修改后序号
-            int nowNum = showLimit - 1, changeNum = num - i - 1;
-            //获取并设置子物体
-            Transform item = this.transform.GetChild(nowNum);
-            Item item_init = item.GetComponent<Item>();
-            item_init.name = changeNum.ToString();
-            item_init.Init(num - i - 1 > 0);
-            //设置子物体位置
-            (item as RectTransform).anchoredPosition = new Vector2(posX[changeNum % 3], (firstItem as RectTransform).anchoredPosition.y + lineHeight);
-            item.SetAsFirstSibling();
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(posX[i % 3], beginPosY - line * lineHeight);
+            if(i % 3 == 2)
+            {
+                line ++;
+            }
         }
     }
 }

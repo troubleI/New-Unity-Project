@@ -5,20 +5,18 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    public string name;
-
     // Start is called before the first frame update
     void Start()
     {
-        Init(true);
+        Init(0,0);
     }
 
-    public void Init(bool real)
+    public void Init(int id,int limit)
     {
         Text text = this.GetComponentInChildren<Text>();
-        if (real)
+        if (id <= limit)
         {
-            text.text = name;
+            text.text = id.ToString();
         }
         else
         {
