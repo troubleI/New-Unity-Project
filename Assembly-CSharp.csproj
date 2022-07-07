@@ -59,8 +59,11 @@
     <Compile Include="Assets\Scripts\Test1\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Test6\Item.cs" />
     <Compile Include="Assets\Scripts\Test5\TypeWriter.cs" />
-    <Compile Include="Assets\Scripts\Test4\TextUndo.cs" />
     <Compile Include="Assets\Scripts\Test6\Pool.cs" />
+    <Compile Include="Assets\Scripts\Test4\TextUndo.cs" />
+    <Compile Include="Assets\Scripts\Extra1\ExampleScript.cs" />
+    <Compile Include="Assets\Scripts\Extra1\Button.cs" />
+    <Compile Include="Assets\Scripts\Extra2\ClickItemManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
