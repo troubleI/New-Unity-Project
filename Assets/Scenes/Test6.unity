@@ -859,7 +859,7 @@ MonoBehaviour:
   posX: 24000000600000009c000000
   lineLimit: 3
   showLimit: 15
-  bagLimit: 61
+  bagLimit: 71
   lineHeight: 60
   beginPosY: 30
 --- !u!1 &1945628303

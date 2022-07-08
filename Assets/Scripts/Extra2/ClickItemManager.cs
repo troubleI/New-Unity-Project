@@ -61,12 +61,12 @@ public class ClickItemManager : MonoBehaviour
     //判断提示框能否出现在左边
     private bool IsLeft(RectTransform rectTransform)
     {
-        return rectTransform.position.x - rectTransform.sizeDelta.x > 0;
+        return rectTransform.anchoredPosition.x - rectTransform.sizeDelta.x > 0;
     }
 
-    //判断提示框能否出现在右边
+    //判断提示框能否出现在下边
     private bool IsDown(RectTransform rectTransform)
     {
-        return rectTransform.position.y - rectTransform.sizeDelta.y > 0;
+        return rectTransform.anchoredPosition.y - rectTransform.sizeDelta.y > 0;
     }
 }

@@ -21,11 +21,12 @@ public class Pool : MonoBehaviour
         return gameObjs;
     }
 
-    public void InitObject(int num,Transform parent)
+    public List<GameObject> InitObject(int num,Transform parent)
     {
         for(int i = 0;i < num; i++)
         {
             gameObjs.Add(Instantiate(prefab, parent));
         }
+        return gameObjs;
     }
 }
