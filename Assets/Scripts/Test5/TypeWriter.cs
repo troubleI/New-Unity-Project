@@ -29,9 +29,9 @@ public class TypeWriter : MonoBehaviour
         if (state)
         {
             //打字速度
-            if(Time.time - beginTime > timeLimit)
+            if(UnityEngine.Time.time - beginTime > timeLimit)
             {
-                beginTime = Time.time;
+                beginTime = UnityEngine.Time.time;
                 //读下一个字符
                 Next();
                 //显示现在读过的字符
@@ -50,7 +50,7 @@ public class TypeWriter : MonoBehaviour
     {
         state = true;
         index = 0;
-        beginTime = Time.time;
+        beginTime = UnityEngine.Time.time;
         labels = new Stack<string>();
     }
 

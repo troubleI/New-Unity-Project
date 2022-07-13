@@ -53,17 +53,30 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\C#Test\Clock.cs" />
+    <Compile Include="Assets\Scripts\Extra2\ClickItemManager.cs" />
     <Compile Include="Assets\Scripts\Test2\MouseClick.cs" />
     <Compile Include="Assets\Scripts\Test6\BagManager.cs" />
+    <Compile Include="Assets\Scripts\C#Test\People\People.cs" />
+    <Compile Include="Assets\Scripts\C#Test\People\PeopleManager.cs" />
     <Compile Include="Assets\Scripts\Test3\MouseRotate.cs" />
     <Compile Include="Assets\Scripts\Test1\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Test6\Item.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Mouse\CreatureView.cs" />
+    <Compile Include="Assets\Scripts\C#Test\People\Host.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Cat\BlackCat.cs" />
+    <Compile Include="Assets\Scripts\Extra1\ExampleScript.cs" />
+    <Compile Include="Assets\Scripts\C#Test\People\Hostess.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Mouse\Mouse.cs" />
+    <Compile Include="Assets\Scripts\Extra1\Button.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Cat\CatManager.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Creature.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Mouse\MouseA.cs" />
     <Compile Include="Assets\Scripts\Test5\TypeWriter.cs" />
     <Compile Include="Assets\Scripts\Test6\Pool.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Cat\Cat.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Mouse\MouseManager.cs" />
     <Compile Include="Assets\Scripts\Test4\TextUndo.cs" />
-    <Compile Include="Assets\Scripts\Extra1\ExampleScript.cs" />
-    <Compile Include="Assets\Scripts\Extra1\Button.cs" />
-    <Compile Include="Assets\Scripts\Extra2\ClickItemManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
