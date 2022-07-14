@@ -7,6 +7,7 @@ public class BlackCat : Cat
     public BlackCat(int id) : base(id)
     {
         this.name = "blackCat";
+        this.myEntity = Entity.BlackCat;
     }
 
     override
@@ -15,7 +16,7 @@ public class BlackCat : Cat
         if (entity == (entity | (int)Entity.Clock))
         {
             gameObject.GetComponent<CreatureView>().Print(name + "╫пак");
-            return Entity.BlackCat;
+            return myEntity;
         }
         else
             return Entity.none;

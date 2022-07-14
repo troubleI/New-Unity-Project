@@ -7,6 +7,7 @@ public class Host : People
     public Host(int id) : base(id)
     {
         this.name = "host";
+        this.myEntity = Entity.Host;
     }
 
     override

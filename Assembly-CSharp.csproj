@@ -53,7 +53,8 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\C#Test\Clock.cs" />
+    <Compile Include="Assets\Scripts\C#Test\MonoSingleton.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Clock\Clock.cs" />
     <Compile Include="Assets\Scripts\Extra2\ClickItemManager.cs" />
     <Compile Include="Assets\Scripts\Test2\MouseClick.cs" />
     <Compile Include="Assets\Scripts\Test6\BagManager.cs" />
@@ -77,6 +78,8 @@
     <Compile Include="Assets\Scripts\C#Test\Cat\Cat.cs" />
     <Compile Include="Assets\Scripts\C#Test\Mouse\MouseManager.cs" />
     <Compile Include="Assets\Scripts\Test4\TextUndo.cs" />
+    <Compile Include="Assets\Scripts\C#Test\People\Manager.cs" />
+    <Compile Include="Assets\Scripts\C#Test\Environment.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

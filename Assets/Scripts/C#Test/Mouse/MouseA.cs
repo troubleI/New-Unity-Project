@@ -7,6 +7,7 @@ public class MouseA : Mouse
     public MouseA(int id) : base(id)
     {
         this.name = "MouseA";
+        this.myEntity = Entity.MouseA;
     }
 
     override
@@ -15,7 +16,7 @@ public class MouseA : Mouse
         if (entity == (entity | (int)Entity.BlackCat))
         {
             gameObject.GetComponent<CreatureView>().Print(name + "ลÜมห");
-            return Entity.MouseA;
+            return myEntity;
         }
         else
             return Entity.none;

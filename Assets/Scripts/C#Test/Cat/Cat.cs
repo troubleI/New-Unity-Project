@@ -6,6 +6,7 @@ public class Cat : Creature
 {
     protected int id;
     protected string name;
+    protected Entity myEntity;
 
     public GameObject gameObject;
 
@@ -13,6 +14,7 @@ public class Cat : Creature
     {
         this.id = id;
         this.name = "cat";
+        this.myEntity = Entity.none;
     }
 
     virtual

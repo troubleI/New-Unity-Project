@@ -7,6 +7,7 @@ public class Hostess : People
     public Hostess(int id) : base(id)
     {
         this.name = "hostess";
+        this.myEntity = Entity.Hostess;
     }
 
     override
@@ -15,7 +16,7 @@ public class Hostess : People
         if (entity == (entity | (int)Entity.MouseA))
         {
             gameObject.GetComponent<CreatureView>().Print(name + "ะัมห");
-            return Entity.Hostess;
+            return myEntity;
         }
         else
             return Entity.none;
