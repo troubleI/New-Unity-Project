@@ -1,10 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// 有必要的话使用状态模式，增加灵活性
-/// </summary>
 public enum Entity
 {
     none = 0,
@@ -15,8 +8,32 @@ public enum Entity
     Hostess = 16
 }
 
-public interface Creature
+public abstract class Creature
 {
+    protected int id;
+    protected string name;
+    protected string action;
+
+    //public GameObject gameObject;
+    public CreatureView creature;
+    public Manager manager;
+
+    protected Creature(int id)
+    {
+        this.id = id;
+    }
+
     //在被继承重写时，每一层都可以被事件响应，这样就可以影响某个群体整体
-    Entity Notice(int entity);
+    virtual
+    public void Notice()
+    {
+        creature.Print(name + action);
+    }
+
+    //主动Invoke事件
+    public void Knock()
+    {
+        creature.Init();
+        manager.Knock();
+    }
 }

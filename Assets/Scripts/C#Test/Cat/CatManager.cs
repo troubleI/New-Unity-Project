@@ -1,27 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-
+/// <summary>
+/// 暂时无内容，以防之后有面对某个物种整体的需求
+/// </summary>
 public class CatManager : Manager
 {
-    public int blackCat_num;
-
     override
-    protected void CreateCreature()
+    protected Creature GetNewCreature(int id)
     {
-        for (int i = 0; i < blackCat_num; i++)
-        {
-            CreateBlackCat(i);
-        }
+        return new Cat(id);
     }
 
-    private void CreateBlackCat(int id)
+    override
+    protected void Init()
     {
-        Cat cat = new BlackCat(id);
-        creatures.Add(cat);
-        GameObject obj = Instantiate(prefab, this.transform);
-        obj.name = "BlackCat";
-        cat.gameObject = obj;
+        throw new System.NotImplementedException();
     }
 }

@@ -1,27 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-
+/// <summary>
+/// 暂时无内容，以防之后有面对某个物种整体的需求
+/// </summary>
 public class MouseManager : Manager
 {
-    public int mouseA_num;
-
     override
-    protected void CreateCreature()
+    protected Creature GetNewCreature(int id)
     {
-        for (int i = 0; i < mouseA_num; i++)
-        {
-            CreateMouseA(i);
-        }
+        return new Mouse(id);
     }
 
-    private void CreateMouseA(int id)
+    override
+    protected void Init()
     {
-        Mouse mouse = new MouseA(id);
-        creatures.Add(mouse);
-        GameObject obj = Instantiate(prefab,this.transform);
-        obj.name = "MouseA";
-        mouse.gameObject = obj;
+        throw new System.NotImplementedException();
     }
 }

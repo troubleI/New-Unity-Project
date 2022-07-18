@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 30765261}
   - component: {fileID: 30765260}
   m_Layer: 0
-  m_Name: CatManager
+  m_Name: BlackCatManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,11 +149,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 30765259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 989699df36cd3b84089422b70a15c24e, type: 3}
+  m_Script: {fileID: 11500000, guid: 18e46b7ce17ec6c4587363341b451b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7526522935103033788, guid: be3c74e79c6ac3a4983e99afda40e99b, type: 3}
-  blackCat_num: 1
+  num: 1
 --- !u!4 &30765261
 Transform:
   m_ObjectHideFlags: 0
@@ -167,6 +167,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &278290383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 278290385}
+  - component: {fileID: 278290384}
+  m_Layer: 0
+  m_Name: HostessManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &278290384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278290383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ed0785aa7c98344a23b2e53188e3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7526522935103033788, guid: be3c74e79c6ac3a4983e99afda40e99b, type: 3}
+  num: 1
+--- !u!4 &278290385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278290383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 272.25702, y: 139.6743, z: -30.21884}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &447697474
 GameObject:
@@ -252,7 +297,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1364894839}
-        m_TargetAssemblyTypeName: Clock, Assembly-CSharp
+        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
         m_MethodName: Knock
         m_Mode: 1
         m_Arguments:
@@ -448,7 +493,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364894838
 GameObject:
@@ -461,7 +506,7 @@ GameObject:
   - component: {fileID: 1364894840}
   - component: {fileID: 1364894839}
   m_Layer: 0
-  m_Name: Clock
+  m_Name: ClockManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,18 +521,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1364894838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87c866828a3fa3b47bcaf03358f7b8f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f6875a02f1afd0c45952f325a9f15cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  myEntity: 1
-  endEntity: 16
-  knockTime: 06000000120000001e000000
-  catManager: {fileID: 30765260}
-  mouseManager: {fileID: 1428487524}
-  peopleManager: {fileID: 1917721528}
+  prefab: {fileID: 6541611004524796249, guid: 8e6ac9a5dddb5a746ba8fef83781c1d6, type: 3}
+  num: 1
 --- !u!4 &1364894840
 Transform:
   m_ObjectHideFlags: 0
@@ -500,7 +538,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1428487523
 GameObject:
@@ -513,7 +551,7 @@ GameObject:
   - component: {fileID: 1428487525}
   - component: {fileID: 1428487524}
   m_Layer: 0
-  m_Name: MouseManager
+  m_Name: MouseAManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,11 +566,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1428487523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9d25c00148000f4fa0b71eddea7c2a6, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1d65842f4cea94cbd145b4ad07f0ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7526522935103033788, guid: be3c74e79c6ac3a4983e99afda40e99b, type: 3}
-  mouseA_num: 1
+  num: 1
 --- !u!4 &1428487525
 Transform:
   m_ObjectHideFlags: 0
@@ -640,7 +678,7 @@ RectTransform:
   m_Children:
   - {fileID: 447697475}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -658,7 +696,7 @@ GameObject:
   - component: {fileID: 1917721529}
   - component: {fileID: 1917721528}
   m_Layer: 0
-  m_Name: PeopleManager
+  m_Name: HostManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -673,12 +711,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1917721527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0668bd740d35b4b973d23ef6a1454a, type: 3}
+  m_Script: {fileID: 11500000, guid: 221bb313b6f45e048bff5909c8056e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7526522935103033788, guid: be3c74e79c6ac3a4983e99afda40e99b, type: 3}
-  host_num: 1
-  hostess_num: 1
+  num: 1
 --- !u!4 &1917721529
 Transform:
   m_ObjectHideFlags: 0
@@ -691,7 +728,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2016126235
 GameObject:

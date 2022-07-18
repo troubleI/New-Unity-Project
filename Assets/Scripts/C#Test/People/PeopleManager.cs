@@ -1,40 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-
+/// <summary>
+/// 暂时无内容，以防之后有面对某个物种整体的需求
+/// </summary>
 public class PeopleManager : Manager
 {
-    public int host_num,hostess_num;
+    override
+    protected Creature GetNewCreature(int id)
+    {
+        return new People(id);
+    }
 
     override
-    protected void CreateCreature()
+    protected void Init()
     {
-        for (int i = 0; i < host_num; i++)
-        {
-            CreateHost(i);
-        }
-        for (int i = 0; i < hostess_num; i++)
-        {
-            CreateHostess(i + host_num);
-        }
-    }
-
-    private void CreateHost(int id)
-    {
-        People people = new Host(id);
-        creatures.Add(people);
-        GameObject obj = Instantiate(prefab, this.transform);
-        obj.name = "Host";
-        people.gameObject = obj;
-    }
-
-    private void CreateHostess(int id)
-    {
-        People people = new Hostess(id);
-        creatures.Add(people);
-        GameObject obj = Instantiate(prefab, this.transform);
-        obj.name = "Hostess";
-        people.gameObject = obj;
+        throw new System.NotImplementedException();
     }
 }
