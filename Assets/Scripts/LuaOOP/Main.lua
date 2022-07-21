@@ -1,10 +1,14 @@
 package.path = "E:\\Project\\New-Unity-Project\\New Unity Project\\Assets\\Scripts\\LuaOOP" .."\\?.lua"
-local ClassA = require("ClassA")
+local Student = require("Student")
 local SingletonA = require("SingletonA")
 
---Object为基类，Class为普通类，ClassA继承了Class类，Singleton为单例类，SingletonA继承单例类
+--Class为基类，Singleton为单例类
 
-local a = ClassA:new()      --实例化
-print(a:GetName())          --覆写父类方法
-print(a:GetId())            --使用父类方法
-print(SingletonA:Instance():GetName())      --单例使用
+local student1 = Student:new("aa",11)      --实例化
+local student2 = Student:new("bb",22)      --实例化
+print(student1:GetName())          --覆写父类方法
+print(student1:GetId())            --使用父类方法
+print(student2:GetName())          --覆写父类方法
+print(student2:GetId())            --使用父类方法
+
+print(SingletonA:Instance().name)      --单例使用

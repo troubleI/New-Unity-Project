@@ -1,10 +1,10 @@
-local Object = require("Object")
+local Class = require("Class")
 
-Singleton = Object:new()
+Singleton = Class:extends()
 
-function Singleton : Instance()
+function Singleton . Instance(self)
     if not self.instance then
-        self.instance = self
+        self.instance = self:new()
     end
     return self.instance
 end

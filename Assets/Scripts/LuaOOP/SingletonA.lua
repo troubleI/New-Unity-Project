@@ -1,6 +1,6 @@
 local Singleton = require("Singleton")
 
-SingletonA = Singleton:new()
+SingletonA = Singleton:extends()
 
 SingletonA.name = "SingletonA"
 
