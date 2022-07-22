@@ -1,11 +1,12 @@
 local Class = require("Class")
 
-People = Class:extends()
+People = Extends(Class)
 People.name = "People"
 People.id = 0
 
-function People:newObj(o,name,id)
-    self.parent:newObj(o)
+--构造方法
+function People.newObj(o,name,id)
+    o.name = name
     o.id = id
 end
 

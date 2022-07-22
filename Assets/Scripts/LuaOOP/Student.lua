@@ -1,10 +1,9 @@
 local People = require("People")
 
-Student = People:extends()
+Student = Extends(People)
 Student.name = "Student"
 
-function Student:newObj(o,name,...)
-    self.parent:newObj(o,name,...)
+function Student.newObj(o,name)
     o.name = name
 end
 

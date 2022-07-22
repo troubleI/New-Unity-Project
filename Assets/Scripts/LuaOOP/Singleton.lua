@@ -1,6 +1,6 @@
 local Class = require("Class")
 
-Singleton = Class:extends()
+Singleton = Extends(Class)
 
 function Singleton . Instance(self)
     if not self.instance then
@@ -8,7 +8,5 @@ function Singleton . Instance(self)
     end
     return self.instance
 end
-
-Singleton:Init()
 
 return Singleton

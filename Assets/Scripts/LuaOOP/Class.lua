@@ -1,53 +1,61 @@
 Class = {}
 
-Class.value_table = {}
+Class.Constructor = {}
 
---调用父类
-local function search(c,k)
-    return c.value_table[k]
+--深拷贝表
+local function DeepCopy(table,is_Class)	
+	if type(table) ~= "table" then   --判断表中是否有表
+        return table;
+    end
+    local NewTable = {};
+	for k,v in pairs(table) do  --把旧表的key和Value赋给新表
+        if k ~= "newObj" then
+            if k ~= "new" and k ~= "Constructor" or is_Class then
+                NewTable[DeepCopy(k)] = DeepCopy(v)
+            end
+        end
+	end
+	return NewTable
+end
+
+--继承接口
+local function GetInterface(table , ...)
+    local interface = {...}
+    for _, value in ipairs(interface) do
+        for k, v in pairs(value) do
+            table[k] = v
+        end
+    end
 end
 
 --类的继承
-function Class.extends(self , ...)
-    local class = {}
-    class.parent = self
-
-    setmetatable(class,{__index = function (_,k)
-        return search(class.parent,k)
-    end})
-
-    --class.__index = class
-    -- function class.extends(...)
-    --     local c = Class.extends(...)
-    --     return c
-    -- end
-
+function Extends(self , ...)
+    local class = DeepCopy(self,true)
+    GetInterface(class,...)
     return class
 end
 
 --生成对象
 function Class.new(self,...)
-    local o = {}
-    setmetatable(o,{__index = self,
-    __newindex = function (t,k,v)
-        if self.value_table[k] ~= nil then
-            rawset(t,k,v)
-        else
-            print("不存在这个key")
-        end
+    local o = DeepCopy(self,false)
+    setmetatable(o,{__newindex = function ()
+        print("key is null")
     end})
-    self:newObj(o,...)
+    for _, value in ipairs(self.Constructor) do
+        value(o,...)
+    end
     return o
 end
 
 --构造方法
-function Class:newObj(o)
-
+function Class.newObj(self)
+    
 end
 
+--保存构造方法
 function Class.Init(self)
-    for key, value in pairs(self) do
-        self.value_table[key] = value
+    if self.newObj ~= nil then
+        self.Constructor[#self.Constructor+1] = self.newObj
     end
 end
 

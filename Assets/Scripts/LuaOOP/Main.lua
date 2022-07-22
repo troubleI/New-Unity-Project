@@ -5,6 +5,8 @@ local GoodStudent = require("GoodStudent")
 
 --Class为基类，Singleton为单例类
 local gStudent = GoodStudent:new("ss",33)   --多继承
+gStudent.a = 0          --测试是否能创建字段
+gStudent.Print()        --接口方法
 print(gStudent:GetName())
 print(gStudent:GetId())
 
@@ -12,7 +14,7 @@ local student1 = Student:new("aa",11)      --实例化
 local student2 = Student:new("bb",22)      --多个对象测试
 print(student1:GetName())          --覆写父类方法
 print(student1:GetId())            --使用父类方法
-print(student2:GetName())          
-print(student2:GetId())            
+print(student2:GetName())
+print(student2:GetId())
 
 print(SingletonA:Instance().name)      --单例使用
