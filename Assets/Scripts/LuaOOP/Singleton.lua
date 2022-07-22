@@ -9,4 +9,6 @@ function Singleton . Instance(self)
     return self.instance
 end
 
+Singleton:Init()
+
 return Singleton
