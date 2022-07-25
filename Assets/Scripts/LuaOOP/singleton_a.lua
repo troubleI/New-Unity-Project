@@ -1,6 +1,6 @@
-local Singleton = require("Singleton")
+local _Singleton = require("singleton_base")
 
-SingletonA = Extends(Singleton)
+local SingletonA = SingletonA or Extends(_Singleton)
 
 SingletonA.name = "SingletonA"
 
