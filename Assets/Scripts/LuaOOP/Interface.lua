@@ -1,4 +1,4 @@
-local Interface = {}
+Interface = {}
 
 function Interface.Print()
     print("I extends Interface!")

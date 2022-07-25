@@ -18,6 +18,4 @@ function People:GetId()
     return self.id .. "    people"
 end
 
-People:Init()
-
 return People

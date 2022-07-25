@@ -11,6 +11,4 @@ function Student:GetName()
     return self.name .. "    student"
 end
 
-Student:Init()
-
 return Student
