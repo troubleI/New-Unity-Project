@@ -36,12 +36,12 @@ local function __constructor(table_obj , table_class,...)
     end
 end
 
---执行析构方法
+--执行delete
 local function __destructor(table_obj,table_class)
-    if table_class.__delete then        --执行自身析构
+    if table_class.__delete then        --执行自身delete
         table_class.__delete(table_obj)
     end
-    if table_class.parent_class then    --执行父类析构
+    if table_class.parent_class then    --执行父类delete
         __destructor(table_obj,table_class.parent_class)
     end
     if table_class.__delete_stack then    --删除依赖对象
@@ -79,9 +79,12 @@ end
 --删除依赖
 function BaseClass.DeleteMe(self,o)
     __destructor(o,self)
+    for k, _ in pairs(o) do
+        o[k] = nil
+    end
 end
 
---析构方法
+--delete方法
 function BaseClass.__delete(self)
     
 end

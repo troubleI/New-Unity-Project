@@ -81,6 +81,7 @@
      <Compile Include="Assets\XLua\Gen\Tutorial_CSCallLua_ItfDBridge.cs" />
      <Compile Include="Assets\XLua\Examples\12_ReImplementInLua\ReImplementInLua.cs" />
      <Compile Include="Assets\XLua\Gen\UnityEngine_ObjectWrap.cs" />
+     <Compile Include="Assets\Scripts\LuaUI\ResourceTool.cs" />
      <Compile Include="Assets\XLua\Examples\06_Coroutine\Coroutine_Runner.cs" />
      <Compile Include="Assets\XLua\Gen\DelegatesGensBridge.cs" />
      <Compile Include="Assets\XLua\Src\MethodWarpsCache.cs" />
@@ -99,6 +100,7 @@
      <Compile Include="Assets\XLua\Gen\UnityEngine_Ray2DWrap.cs" />
      <Compile Include="Assets\Scripts\Test3\MouseRotate.cs" />
      <Compile Include="Assets\XLua\Gen\System_Collections_IEnumeratorBridge.cs" />
+     <Compile Include="Assets\Scripts\LuaUI\LuaBehaviour.cs" />
      <Compile Include="Assets\XLua\Examples\02_U3DScripting\LuaBehaviour.cs" />
      <Compile Include="Assets\XLua\Gen\UnityEngine_ComponentWrap.cs" />
      <Compile Include="Assets\XLua\Src\LuaBase.cs" />
@@ -167,7 +169,6 @@
      <Compile Include="Assets\Scripts\Test6\Pool.cs" />
      <Compile Include="Assets\XLua\Gen\XLuaTest_Foo2ParentWrap.cs" />
      <Compile Include="Assets\Scripts\C#Test\Model\People\HostessModel.cs" />
-     <Compile Include="Assets\Scripts\LuaOOP\LuaOOP.cs" />
      <Compile Include="Assets\XLua\Src\CopyByValue.cs" />
      <Compile Include="Assets\XLua\Src\StaticLuaCallbacks.cs" />
      <Compile Include="Assets\XLua\Gen\XLuaTest_InvokeLua_ICalcBridge.cs" />

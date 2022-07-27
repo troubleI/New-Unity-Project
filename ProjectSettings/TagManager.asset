@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Panel1_btn
+  - Panel2_btn
+  - Panel3_btn
+  - win1_btn
+  - win2_btn
+  - win3_btn
+  - Canvas
+  - Back_btn
+  - WindowManager
   layers:
   - Default
   - TransparentFX
@@ -11,7 +20,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - UI_btn
   - 
   - 
   - 

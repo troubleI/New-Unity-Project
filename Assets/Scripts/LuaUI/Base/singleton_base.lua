@@ -1,4 +1,4 @@
-local _Class = require("base_class")
+local _Class = require("Base/base_class")
 
 local BaseSingleton = BaseSingleton or Extends(_Class)
 

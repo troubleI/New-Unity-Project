@@ -1,0 +1,17 @@
+local _Class = require("Base/base_class")
+local _PanelManager = require("Panel/panel_manager")
+local _WindowManager = require("Window/window_manager")
+
+local p = _Class.New(_PanelManager)
+p:AddPanel("UI/Panel1","Panel1")
+p:AddPanel("UI/Panel2","Panel2")
+p:AddPanel("UI/Panel3","Panel3")
+p:ClickPanel()
+
+local w = _Class.New(_WindowManager)
+w:AddWindow("UI/win1","win1")
+w:AddWindow("UI/win2","win2")
+w:AddWindow("UI/win3","win3")
+w:ClickWindow()
+w:ClickBackBtn("UI/Back_btn")
+w:CloseWindow()
