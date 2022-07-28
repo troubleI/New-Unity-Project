@@ -13,6 +13,7 @@ TagManager:
   - Canvas
   - Back_btn
   - WindowManager
+  - PanelManager
   layers:
   - Default
   - TransparentFX

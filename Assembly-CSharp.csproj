@@ -81,7 +81,6 @@
      <Compile Include="Assets\XLua\Gen\Tutorial_CSCallLua_ItfDBridge.cs" />
      <Compile Include="Assets\XLua\Examples\12_ReImplementInLua\ReImplementInLua.cs" />
      <Compile Include="Assets\XLua\Gen\UnityEngine_ObjectWrap.cs" />
-     <Compile Include="Assets\Scripts\LuaUI\ResourceTool.cs" />
      <Compile Include="Assets\XLua\Examples\06_Coroutine\Coroutine_Runner.cs" />
      <Compile Include="Assets\XLua\Gen\DelegatesGensBridge.cs" />
      <Compile Include="Assets\XLua\Src\MethodWarpsCache.cs" />

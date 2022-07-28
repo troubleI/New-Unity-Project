@@ -2,14 +2,11 @@ local _Class = require("Base/base_class")
 local _Singleton = require("Base/singleton_base")
 local _Stack = require("Base/lua_stack")
 local _WindowView = require("Window/window_view")
-local _PanelManager = require("Panel/panel_manager")
 local _ResourceManager = require("resource_manager")
+local _PanelManager = require("Panel/panel_manager")
 
 local WindowManager = WindowManager or Extends(_Singleton)
---保存父物体，便于生成
-local parent_transform = _ResourceManager.FindGameObject("WindowManager").transform
---返回按钮
-WindowManager.back_btn = false
+
 --保存所有window
 WindowManager.window_list = {}
 --保存打开的window
@@ -18,52 +15,48 @@ WindowManager.window_stack = _Class.New(_Stack)
 WindowManager.now_window = false
 
 --配置window
-function WindowManager:AddWindow(path,name)
-    local window = _ResourceManager.LoadAndInstantiate(path,parent_transform)
+function WindowManager:AddWindow(path,name,parent_path)
     local window_view = _Class.New(_WindowView)
-    window_view:SetWindow(window)
+    local parent_transform = _ResourceManager.FindGameObject(parent_path).transform
+    window_view:SetWindow(path,parent_transform,self)
     self.window_list[name] = window_view
 end
-
---监听返回按钮
-function WindowManager:ClickBackBtn(path)
-    self.back_btn = _ResourceManager.LoadAndInstantiate(path,parent_transform)
-    self.back_btn:GetComponent("Button").onClick:AddListener(function ()
-        if self.window_stack.over == 0 then
-            self:CloseWindow()
-        else
-            self.window_list[self.now_window]:OnDisable()
-            self.now_window = self.window_stack:Pop()
-            self.window_list[self.now_window]:OnEnable()
-        end
-    end)
+--配置button
+function WindowManager:AddButton(windowName,name,func,...)
+    self.window_list[windowName]:AddBtn(name,func,...)
 end
 
---监听click事件
-function WindowManager:ClickWindow()
-    for k, v in pairs(self.window_list) do
-        local btn = _ResourceManager.FindGameObjects(k .. "_btn")
-        for i = 0, btn.Length - 1 do
-            btn[i]:GetComponent("Button").onClick:AddListener(function ()
-                self.back_btn:SetActive(true)
-                if self.now_window then
-                    self.window_stack:Push(self.now_window)
-                    self.window_list[self.now_window]:OnDisable()
-                else
-                    _Singleton.Instance(_PanelManager):ClosePanel()
-                end
-                self.now_window = k
-                v:OnEnable()
-            end)
-        end
+-- 打开window
+function WindowManager:ClickWindow(name)
+    if self.now_window then
+        self.window_stack:Push(self.now_window)
+        self.window_list[self.now_window]:OnDisable()
+    else
+        _Singleton.Instance(_PanelManager):ClosePanel()
+    end
+    if name ~= "WindowMain" then
+        self.now_window = name 
+    end
+    self.window_list[name]:OnEnable()
+end
+
+-- 返回按钮
+function WindowManager:BackBtn()
+    if self.window_stack.over == 0 then
+        self:CloseWindow()
+    else
+        self.window_list[self.now_window]:OnDisable()
+        self.now_window = self.window_stack:Pop()
+        self.window_list[self.now_window]:OnEnable()
     end
 end
 
 function WindowManager:CloseWindow()
     self.window_stack:Clear()
-    self.back_btn:SetActive(false)
-    for _, v in pairs(self.window_list) do
-        v:OnDisable()
+    for k, v in pairs(self.window_list) do
+        if k ~= "WindowMain" then
+            v:OnDisable()
+        end
     end
     self.now_window = false
 end
