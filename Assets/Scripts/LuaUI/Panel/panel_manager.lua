@@ -11,7 +11,7 @@ PanelManager.panel_list = {}
 function PanelManager:AddPanel(path,name,parent_path)
     local panel_view = _Class.New(_PanelView)
     local parent_transform = _ResourceManager.FindGameObject(parent_path).transform
-    panel_view:SetPanel(path,parent_transform,self)
+    panel_view:SetUI(path,parent_transform,self)
     self.panel_list[name] = panel_view
 end
 --配置button

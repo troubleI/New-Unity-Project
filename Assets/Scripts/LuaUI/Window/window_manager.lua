@@ -18,7 +18,7 @@ WindowManager.now_window = false
 function WindowManager:AddWindow(path,name,parent_path)
     local window_view = _Class.New(_WindowView)
     local parent_transform = _ResourceManager.FindGameObject(parent_path).transform
-    window_view:SetWindow(path,parent_transform,self)
+    window_view:SetUI(path,parent_transform,self)
     self.window_list[name] = window_view
 end
 --配置button
